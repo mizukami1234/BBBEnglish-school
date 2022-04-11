@@ -1,0 +1,1041 @@
+@charset "UTF-8";
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-style: normal;
+  text-align: left;
+  zoom: 1;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+table {
+  border-collapse: collapse;
+  font-family: inherit;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-size: 100%;
+  font-weight: normal;
+  line-height: 1;
+}
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 16px;
+}
+input[type="button"],
+input[type="text"],
+input[type="submit"] {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+textarea {
+  resize: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+th,
+td {
+  border-collapse: collapse;
+}
+table th,
+table td {
+  white-space: nowrap;
+}
+ul,
+ol {
+  list-style-type: none;
+}
+img {
+  vertical-align: text-bottom;
+  vertical-align: -webkit-baseline-middle;
+  max-width: 100%;
+  height: auto;
+  width/***/: auto;
+}
+
+/* ここまでリセットCSS */
+
+// bodyの共通設定
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// ラッパー（max-width860px）
+
+.wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+// ヘッダー
+
+.header {
+  height: 100px;
+  padding-top: 40px;
+  padding-left: 50px;
+
+  h1 {
+    width: 100px;
+
+    a {
+      display: block;
+
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .hamburger-menu {
+    background-color: #ff2a2a;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    z-index: 30;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &__top {
+      width: 50px;
+      height: 2px;
+      background: #fff;
+      position: absolute;
+      left: 25px;
+      top: 36px;
+    }
+
+    &__center {
+      width: 50px;
+      height: 2px;
+      background: #fff;
+      position: absolute;
+      left: 25px;
+      top: 50px;
+    }
+
+    &__bottom {
+      width: 50px;
+      height: 2px;
+      background: #fff;
+      position: absolute;
+      left: 25px;
+      top: 64px;
+    }
+  }
+}
+
+.clicked .hamburger-menu__top {
+  top: 50px;
+  transform: rotate(-45deg);
+  transition-duration: 0.7s;
+}
+
+.clicked .hamburger-menu__center {
+  top: 50px;
+  transform: rotate(45deg);
+  transition-duration: 0.7s;
+}
+
+.clicked .hamburger-menu__bottom {
+  top: 50px;
+  transform: rotate(45deg);
+  transition-duration: 0.7s;
+}
+
+.navi {
+  width: 100vw;
+  height: 100vh;
+  background-color: #ff2a2a;
+  position: fixed;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  z-index: 20;
+
+  h1 {
+    width: 100px;
+    margin-top: 40px;
+    margin-left: 50px;
+    a {
+      display: block;
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+// 隠れたメニューの記載
+
+.menu {
+  margin-top: -20px;
+  margin-bottom: 40px;
+  &__list {
+    margin-bottom: 20px;
+    text-align: center;
+
+    a {
+      color: white;
+      font-weight: bold;
+    }
+  }
+}
+
+.free-experience-btn {
+  text-align: center;
+  width: 250px;
+  border: solid 1px #fff;
+  color: #fff;
+  display: block;
+  font-weight: bold;
+  padding: 15px 0;
+  margin: 0 auto;
+  position: relative;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #fff;
+    color: #ff2a2a;
+  }
+
+  &::after {
+    content: "　";
+    width: 250px;
+    border-right: solid 1px #fff;
+    border-bottom: solid 1px #fff;
+    padding: 15px 0;
+    position: absolute;
+    right: -6px;
+    bottom: -6px;
+  }
+}
+
+// メインビジュアル
+
+.mainvisual {
+  height: 720px;
+  position: relative;
+  margin-bottom: 120px;
+
+  &__text {
+    position: absolute;
+    top: 280px;
+    left: 10%;
+    z-index: 10;
+  }
+
+  &__title {
+    font-size: 2.875rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-shadow: 0 4px 6px #fff;
+  }
+}
+
+.free-experience-here {
+  background-color: #ff2a2a;
+  box-shadow: 0 6px 0 0 #9a0413;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1.5rem;
+  display: block;
+  width: 400px;
+  padding: 15px 35px;
+  text-align: center;
+  transition: 0.3s;
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border-top: solid 3px #fff;
+    border-right: solid 3px #fff;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 26px;
+    right: 30px;
+  }
+
+  &:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
+
+.fade {
+  &__imgWrapper {
+    width: 75%;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    animation: fade 15s infinite;
+
+    img {
+      object-fit: cover;
+      height: 720px;
+    }
+
+    &:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    &:nth-child(2) {
+      animation-delay: 5s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 10s;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      box-shadow: inset 0px 0px 20px 20px #fff;
+      // これ、なんでimgWrapperにbox-shadowをかけても反映されないの？
+    }
+  }
+}
+
+// 画像の表示秒数に関する設定
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+// reason
+
+.reason {
+  margin-bottom: 120px;
+
+  .bg-red {
+    background-color: #ff2a2a;
+    padding: 80px 0;
+  }
+}
+
+.slide {
+  width: 50%;
+  padding: 5%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 60px;
+    width: auto;
+    margin-right: 30px;
+  }
+
+  &__title {
+    color: #ff2a2a;
+    font-size: 1.75rem;
+    font-weight: bold;
+  }
+
+  &__description {
+    font-size: 1.125rem;
+  }
+}
+
+.slide-left {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-bottom: 40px;
+  opacity: 0;
+}
+
+.slide-right {
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  opacity: 0;
+}
+
+.slide-from-l {
+  animation: slide-from-left 0.5s ease-out 0s 1 forwards;
+}
+
+.slide-from-r {
+  animation: slide-from-right 0.5s ease-out 0s 1 forwards;
+}
+
+@keyframes slide-from-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-from-right {
+  0% {
+    transform: translateX(200%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+}
+
+// セクションタイトル（共通設定）
+.sec-title {
+  font-size: 2.25rem;
+  margin-bottom: 100px;
+  text-align: center;
+  font-weight: bold;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    text-align: center;
+    background-color: #333;
+    margin: 20px auto 0 auto;
+  }
+}
+// セクションタイトル終了
+
+// voice
+
+.voice__item {
+  margin-bottom: 60px;
+  opacity: 0;
+}
+
+// 左側の二人
+.voice__item--left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  .student {
+    margin-right: 25px;
+    img {
+      width: 120px;
+      height: 120px;
+      background-color: #ccc;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .name {
+      font-size: 0.75rem;
+      text-align: center;
+    }
+  }
+
+  .voice__text {
+    width: 60%;
+    background-color: #e9f1fb;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 60%;
+      left: 0;
+      margin-left: -30px;
+      border: 15px solid transparent;
+      border-right: 15px solid #e9f1fb;
+    }
+  }
+}
+
+.voice__item--right {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+
+  .employee {
+    margin-left: 25px;
+    img {
+      width: 120px;
+      height: 120px;
+      background-color: #ccc;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .name {
+      font-size: 0.75rem;
+      text-align: center;
+    }
+  }
+
+  .voice__text {
+    width: 60%;
+    background-color: #e9f1fb;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 60%;
+      right: 0;
+      margin-right: -30px;
+      border: 15px solid transparent;
+      border-left: 15px solid #e9f1fb;
+    }
+  }
+}
+
+.baloon {
+  animation: baloon 0.5s ease-out 1 0s forwards;
+}
+
+@keyframes baloon {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// 概要
+
+.summary {
+  background: url(images/bg.gif) repeat;
+  animation: fall 10s infinite linear;
+  padding: 60px 0;
+  margin-bottom: 120px;
+
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  &__list {
+    margin-bottom: 32px;
+  }
+}
+
+.school-info {
+  width: 48%;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 60px;
+
+  &__title--jp {
+    font-size: 1.75rem;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  &__title--en {
+    font-size: 1.125rem;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+@keyframes fall {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -700px 700px;
+  }
+}
+
+// エントリー
+
+.entry {
+  margin-bottom: 120px;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+
+  &__description {
+    font-size: 1.125rem;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  &__btn {
+    background-color: #ff2a2a;
+    border-radius: 40px;
+    border: solid 3px #ff2a2a;
+    color: #fff;
+    font-size: 1.75rem;
+    font-weight: bold;
+    display: block;
+    padding: 15px;
+    text-align: center;
+    transition: 0.3s;
+
+    &:hover {
+      color: #ff2a2a;
+      background-color: #fff;
+    }
+  }
+}
+
+// フッターここから
+
+.footer {
+  background-color: #e8e8e8;
+  padding: 60px 0 20px 0;
+
+  a {
+    font-size: 0.875rem;
+    transition: 0.3s;
+    color: #333;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 60px;
+  }
+
+  &__title {
+    font-weight: bold;
+  }
+
+  &__menu {
+    padding: 10px 0 0 10px;
+
+    & > li {
+      margin-bottom: 3px;
+    }
+  }
+
+  &__item {
+    width: 25%;
+  }
+}
+
+.copyright {
+  font-size: 0.625rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+  // 共通設定
+  .sec-title {
+    font-size: 1.75rem;
+    margin-bottom: 60px;
+  }
+
+  .wrapper {
+    padding: 0 16px;
+  }
+
+
+  .header {
+    padding-top: 25px;
+    padding-left: 25px;
+
+    .hamburger-menu {
+      width: 75px;
+      height: 75px;
+
+      &__top {
+        width: 35px;
+        left: 21px;
+        top: 26px;
+      }
+
+      &__center {
+        width: 35px;
+        left: 21px;
+        top: 37px;
+      }
+
+      &__bottom {
+        width: 35px;
+        left: 21px;
+        top: 48px;
+      }
+    }
+
+    .navi {
+      h1 {
+        margin-top: 25px;
+        margin-left: 25px;
+      }
+    }
+
+    .menu {
+      margin-top: 20px;
+    }
+  }
+
+  // ハンバーガーメニュー3本線の回転アニメーション
+  .clicked .hamburger-menu__top {
+    top: 37px;
+    transform: rotate(-45deg);
+    transition-duration: 0.7s;
+  }
+
+  .clicked .hamburger-menu__center {
+    top: 37px;
+    transform: rotate(45deg);
+    transition-duration: 0.7s;
+  }
+
+  .clicked .hamburger-menu__bottom {
+    top: 37px;
+    transform: rotate(45deg);
+    transition-duration: 0.7s;
+  }
+
+  // ここからメイン画像
+
+  .mainvisual {
+    height: 490px;
+    margin-bottom: 80px;
+
+    &__text {
+      position: absolute;
+      width: calc(100% - 32px);
+      top: 310px;
+      left: 16px;
+
+      .free-experience-here {
+        width: 100%;
+      }
+    }
+
+    &__title {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .fade {
+      &__imgWrapper {
+        width: 100%;
+        img {
+          height: 300px;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  // 左右からスライドするアニメーションのところ
+  .slide {
+    width: 95%;
+    padding: 5%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      height: 60px;
+      width: auto;
+      margin-right: 30px;
+    }
+
+    &__title {
+      color: #ff2a2a;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    &__description {
+      font-size: 1.125rem;
+    }
+  }
+
+  .slide-left {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-bottom: 40px;
+    opacity: 0;
+  }
+
+  .slide-right {
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    opacity: 0;
+  }
+
+  .slide-from-l {
+    animation: slide-from-left 0.5s ease-out 0s 1 forwards;
+  }
+
+  .slide-from-r {
+    animation: slide-from-right 0.5s ease-out 0s 1 forwards;
+  }
+
+  @keyframes slide-from-left {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateX(-5%);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-from-right {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateX(5%);
+      opacity: 1;
+    }
+  }
+
+  // voice
+  .voice {
+    &__item {
+      margin-bottom: 40px;
+    }
+    &__item--left {
+      flex-direction: column-reverse;
+      align-items: center;
+
+      .voice__text {
+        width: 100%;
+        margin-bottom: 30px;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          margin-left: -15px;
+          border: 15px solid transparent;
+          border-top: 15px solid #e9f1fb;
+        }
+      }
+    }
+
+    &__item--right {
+      flex-direction: column;
+      align-items: center;
+
+      .voice__text {
+        width: 100%;
+        margin-bottom: 30px;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 100%;
+          right: 50%;
+          margin-left: -15px;
+          border: 15px solid transparent;
+          border-top: 15px solid #e9f1fb;
+        }
+      }
+    }
+
+    .student,
+    .employee {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  // 概要
+  .summary {
+
+    &__menu {
+      flex-direction: column;
+    }
+
+    &__list {
+      width: 100%;
+    }
+  }
+
+  // エントリー
+  .entry {
+
+    &__title {
+      font-size: 1.5rem;
+    }
+
+    &__description {
+      font-size: 1rem;
+    }
+
+    &__btn {
+      font-size: 1.5rem;
+    }
+  }
+
+  // フッター
+
+  .footer {
+    &__inner {
+      flex-wrap: wrap;
+    }
+
+    &__item {
+      width: 48%;
+      margin-bottom: 20px;
+    }
+  }
+}
+
